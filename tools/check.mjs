@@ -30,7 +30,9 @@ for(const [asset,budget] of [['background-1920.webp',350000],['background-960.we
 }
 if(!home.includes('/images/optimized/background-1920.webp')||!home.includes('/images/optimized/background-960.webp')||!home.includes('<picture>'))errors.push('Missing responsive background');
 if(!home.includes('data:image/jpeg;base64,')||!home.includes('onerror='))errors.push('Missing background preview/recovery');
-if(files.some(f=>f===path.join(root,'images/background.jpg')))errors.push('Original background must not be published');
+try{if((await stat(path.join(root,'images/background.jpg'))).size>150000)errors.push('Legacy background URL must serve a small compatibility image');}
+catch{errors.push('Missing legacy homepage background URL');}
+if(!home.includes('isolation:isolate')||!home.includes('content-visibility:visible'))errors.push('Missing stable homepage background painting');
 if(!home.includes('ShokaX'))errors.push('Missing native ShokaX attribution');
 if(errors.length){console.error([...new Set(errors)].join('\n'));process.exit(1);}
-console.log(`PASS: ${html.length} HTML pages, local links/assets, responsive image budgets, preview/recovery, original excluded, ShokaX, search, RSS and draft exclusion.`);
+console.log(`PASS: ${html.length} HTML pages, local links/assets, responsive image budgets, preview/recovery, legacy URL compatibility, background painting, ShokaX, search, RSS and draft exclusion.`);

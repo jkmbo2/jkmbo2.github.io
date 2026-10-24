@@ -1,6 +1,10 @@
 // Extend the installed theme through Hexo's filter, without editing vendor files.
 const {readFileSync}=require('node:fs');
 const {join}=require('node:path');
+// Old tabs may retain HTML pointing at this URL. Serve a small compatible JPEG.
+hexo.extend.generator.register('compatible-background',function(){
+ return {path:'images/background.jpg',data:readFileSync(join(hexo.base_dir,'source/images/optimized/background-fallback.jpg'))};
+});
 hexo.extend.filter.register('after_render:html',function(html){
  const base='/images/optimized/';
  if(!html.includes(base+'background-1920.webp'))return html;
@@ -21,6 +25,8 @@ hexo.extend.filter.register('after_render:html',function(html){
    `<img src="${fallback}" loading="eager" decoding="async" fetchpriority="high" ${alt} onerror="${recover}"></picture>`;
  });
  // The tiny preview is present in HTML and remains visible even if a transfer fails.
- html=html.replace('</head>',`<style>#imgs{background-image:url('${placeholder}');background-size:cover;background-position:center}</style></head>`);
+ // Keep the theme's negative background layer inside this stacking context,
+ // above the body paint. Always paint it rather than relying on off-screen culling.
+ html=html.replace('</head>',`<style>#container{isolation:isolate}#container #imgs{content-visibility:visible;contain:none;background-image:url('${placeholder}');background-size:cover;background-position:center}#imgs picture{display:block;width:100%;height:100%}</style></head>`);
  return html.replaceAll(base+'cover.webp',base+'cover.webp?v='+version);
 },5);
