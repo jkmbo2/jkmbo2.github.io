@@ -1,0 +1,63 @@
+alternate: 学习笔记
+experiments:
+  antiFakeWebsite: false
+homeConfig:
+  fixedCover: /images/background.jpg
+  gradient: false
+  coverConfig:
+    enableCover: true
+    enablePreload: true
+    enableNextGradientCover: false
+  cateCards: []
+modules:
+  player: false
+  fireworks: false
+  visibilityListener: false
+  tabs: true
+  quiz: false
+  cloudflarePatch: false
+font:
+  enable: false
+  loadFromGoogle: false
+  logo:
+    size: 1.8
+  title:
+    size: 1.8
+darkmode: true
+auto_dark:
+  enable: false
+loader:
+  start: false
+  switch: false
+fireworks:
+  enable: false
+menu:
+  home: / || home
+  posts:
+    default: /archives/ || feather
+    archives: /archives/ || list-alt
+    categories: /categories/ || th
+    tags: /tags/ || tags
+  about: /about/ || user
+social:
+  github: https://github.com/jkmbo2 || github || '#191717'
+sidebar:
+  position: left
+  avatar: avatar.svg
+widgets:
+  random_posts: false
+  recent_comments: false
+footer:
+  since: 2026
+  powered: true
+  count: true
+reward:
+  enable: false
+pagefind:
+  enable: true
+twikoo:
+  enable: false
+waline:
+  enable: false
+summary:
+  enable: false

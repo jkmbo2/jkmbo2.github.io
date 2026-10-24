@@ -1,3 +1,74 @@
-title: Sofei的个人博客
-description: 记录我的学习、生活、项目
-theme: minima
+title: 云飞的学习笔记
+subtitle: 记录学习、实践与思考
+description: 关于编程、阅读和学习过程的个人记录。
+author: 云飞
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://jkmbo2.github.io
+root: /
+permalink: posts/:title/
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+include:
+  - .nojekyll
+skip_render:
+  - images/**
+  - assets/**
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: []
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: false
+syntax_highlighter: false
+highlight:
+  enable: false
+prismjs:
+  enable: false
+index_generator:
+  path: ''
+  per_page: 8
+  order_by: -date
+per_page: 8
+pagination_dir: page
+theme: shokax
+feed:
+  limit: 20
+  order_by: -date
+  tag_dir: false
+  category_dir: false
+  rss:
+    enable: true
+    template: node_modules/hexo-theme-shokax/layout/_alternate/rss.ejs
+    output: rss.xml
+  atom:
+    enable: true
+    template: node_modules/hexo-theme-shokax/layout/_alternate/atom.ejs
+    output: atom.xml
+  jsonFeed:
+    enable: true
+    template: node_modules/hexo-theme-shokax/layout/_alternate/json.ejs
+    output: feed.json
+minify:
+  js:
+    enable: false
+  css:
+    enable: true
+  html:
+    enable: true
+  image:
+    enable: false
+deploy:
+  type: ''

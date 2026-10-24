@@ -1,0 +1,50 @@
+{
+  "name": "yunfei-shokax-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "云飞的学习笔记 · Hexo + ShokaX",
+  "scripts": {
+    "dev": "hexo server --port 5173",
+    "start": "hexo server --port 5173",
+    "build": "hexo clean && hexo generate && pagefind --site public",
+    "check": "node tools/check.mjs",
+    "new": "hexo new post"
+  },
+  "hexo": {
+    "version": "7.3.0"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "hexo": "7.3.0",
+    "hexo-feed": "1.1.2",
+    "hexo-generator-category": "2.0.0",
+    "hexo-generator-sitemap": "3.0.1",
+    "hexo-generator-tag": "2.0.0",
+    "hexo-lightning-minify": "0.2.2",
+    "hexo-renderer-aether": "0.0.6",
+    "hexo-renderer-ejs": "2.0.0",
+    "hexo-renderer-pug": "3.0.0",
+    "hexo-renderer-stylus": "3.0.1",
+    "hexo-server": "3.0.0",
+    "hexo-theme-shokax": "0.5.4",
+    "nyx-player": "0.1.1",
+    "pagefind": "1.5.2",
+    "shokax-uikit": "0.0.5"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "overrides": {
+    "unocss": "66.3.3",
+    "vue": "3.5.18",
+    "@vue/compiler-core": "3.5.18",
+    "@vue/compiler-dom": "3.5.18",
+    "@vue/compiler-sfc": "3.5.18",
+    "@vue/compiler-ssr": "3.5.18",
+    "@vue/reactivity": "3.5.18",
+    "@vue/runtime-core": "3.5.18",
+    "@vue/runtime-dom": "3.5.18",
+    "@vue/server-renderer": "3.5.18",
+    "@vue/shared": "3.5.18"
+  }
+}
