@@ -6,3 +6,5 @@ db.json
 artifacts/
 *.log
 .DS_Store
+source/images/optimized/
+source/_data/optimized_background.json

@@ -21,6 +21,8 @@ include:
 skip_render:
   - images/**
   - assets/**
+exclude:
+  - images/background.jpg
 new_post_name: :title.md
 default_layout: post
 titlecase: false

@@ -1,10 +1,11 @@
 """Run against a static preview of public/ on localhost:5173."""
 from pathlib import Path
+import os
 from playwright.sync_api import sync_playwright, expect
 
 OUT=Path(__file__).resolve().parents[1]/'artifacts'
 OUT.mkdir(exist_ok=True)
-BASE='http://localhost:5173'
+BASE=os.environ.get('BLOG_URL','http://localhost:5173')
 errors=[]
 with sync_playwright() as p:
  browser=p.chromium.launch(headless=True)
@@ -17,8 +18,7 @@ with sync_playwright() as p:
   page.wait_for_timeout(150)
  page.evaluate('window.scrollTo(0,0)')
  page.wait_for_timeout(1000)
- expect(page.locator('#imgs img')).to_have_attribute('src','/images/background.jpg')
- assert page.locator('#imgs img').evaluate('(img)=>img.complete && img.naturalWidth===4500')
+ assert page.locator('#imgs img').evaluate('(img)=>img.complete && img.naturalWidth===1920 && img.currentSrc.includes("background-1920.webp")')
  expect(page.locator('.segments.posts article.item')).to_have_count(4)
  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
  assert page.locator('#brand .artboard').evaluate('(el)=>parseFloat(getComputedStyle(el).fontSize)')<=32
@@ -53,6 +53,7 @@ with sync_playwright() as p:
  mobile.wait_for_timeout(1500)
  assert mobile.evaluate('document.documentElement.scrollWidth<=innerWidth')
  expect(mobile.locator('#imgs img')).to_be_visible()
+ assert mobile.locator('#imgs img').evaluate('(img)=>img.complete && img.naturalWidth===960 && img.currentSrc.includes("background-960.webp")')
  mobile.screenshot(path=str(OUT/'shokax-mobile.png'),full_page=True)
  assert not errors,errors
  browser.close()

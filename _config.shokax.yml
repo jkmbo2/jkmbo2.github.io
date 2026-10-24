@@ -2,7 +2,7 @@ alternate: 学习笔记
 experiments:
   antiFakeWebsite: false
 homeConfig:
-  fixedCover: /images/background.jpg
+  fixedCover: /images/optimized/background-1920.webp
   gradient: false
   coverConfig:
     enableCover: true

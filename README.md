@@ -50,7 +50,7 @@ git push
 
 ```powershell
 npx hexo new draft "还在整理的想法"
-npx hexo server --draft --port 5173
+npm run dev -- --draft
 ```
 
 草稿位于 source/_drafts，正式构建不发布。写好后执行 `npx hexo publish "还在整理的想法"`。
@@ -65,6 +65,8 @@ npx hexo server --draft --port 5173
 - `source/_posts`：正式文章；标有示例提示的文章可替换或删除。
 
 首页、文章及搜索使用 ShokaX 原生组件。没有配置评论服务或自动播放音乐。Pagefind 搜索索引会在每次构建后自动生成。
+
+更换背景时仍然替换 `source/images/background.jpg`。运行 `npm run dev` 或 `npm run build` 时会自动生成手机、桌面和文章缩略图，网页不再下载原图。生成目录不提交；原图不发布到网站。更换图片后重启本地预览。图片版本号自动更新，避免旧缓存。背景传输失败时会尝试一次较小的 JPEG，并始终保留内嵌预览。
 
 ## 目录与维护
 

@@ -8,7 +8,10 @@
     "start": "hexo server --port 5173",
     "build": "hexo clean && hexo generate && pagefind --site public",
     "check": "node tools/check.mjs",
-    "new": "hexo new post"
+    "new": "hexo new post",
+    "prebuild": "node tools/prepare-images.mjs",
+    "predev": "node tools/prepare-images.mjs",
+    "prestart": "node tools/prepare-images.mjs"
   },
   "hexo": {
     "version": "7.3.0"
@@ -29,7 +32,8 @@
     "hexo-theme-shokax": "0.5.4",
     "nyx-player": "0.1.1",
     "pagefind": "1.5.2",
-    "shokax-uikit": "0.0.5"
+    "shokax-uikit": "0.0.5",
+    "sharp": "0.33.5"
   },
   "engines": {
     "node": ">=22"
